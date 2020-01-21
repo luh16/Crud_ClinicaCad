@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MvcCad.Models.Pessoa>
+<h4>Medicos cadastrados</h4>
+<p>
+    @Html.ActionLink("Adicionar novo cadastro", "IncluirCadastro")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CRM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especialidade)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @Html.HiddenFor(model => item.MedicoId)
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CRM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especialidade)
+            </td>
+            <td>
+                @Html.ActionLink("Alterar", "AlterarCadastro", new { id = item.MedicoId }) |
+               |
+                @Html.ActionLink("Excluir", "ExcluirCadastro", new { id = item.MedicoId }, new { onclick = "return confirm('Tem certeza que deseja xcluir?');" })
+            </td>
+        </tr>
+    }
+
+</table>
